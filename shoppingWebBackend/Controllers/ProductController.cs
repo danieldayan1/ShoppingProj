@@ -18,12 +18,12 @@ namespace shoppingWebBackend.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<Dictionary<CategoryModel, List<ProductModel>>>> GetProductsGroupByCategory()
+        public async Task<ActionResult<Dictionary<string, List<ProductModel>>>> GetProductsGroupByCategory()
         {
-            var res = new Dictionary<CategoryModel, List<ProductModel>>();
+            var res = new Dictionary<string, List<ProductModel>>();
             foreach(var cat in _context.Categories)
             {
-                res[cat] = await _context.Products.Include(p => p.Category).ToListAsync();
+                res[cat.Name] = await _context.Products.Include(p => p.Category).ToListAsync();
             }
             return res;
         }
