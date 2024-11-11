@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\danda\\Desktop\\shoppingWebBackend\\shoppingWebBackend.csproj",
+      "projectUniqueName": "C:\\Users\\danda\\Desktop\\shoppingProj\\ShoppingProj\\shoppingWebBackend\\shoppingWebBackend.csproj",
       "projectName": "shoppingWebBackend",
-      "projectPath": "C:\\Users\\danda\\Desktop\\shoppingWebBackend\\shoppingWebBackend.csproj",
+      "projectPath": "C:\\Users\\danda\\Desktop\\shoppingProj\\ShoppingProj\\shoppingWebBackend\\shoppingWebBackend.csproj",
       "packagesPath": "C:\\Users\\danda\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\danda\\Desktop\\shoppingWebBackend\\obj\\",
+      "outputPath": "C:\\Users\\danda\\Desktop\\shoppingProj\\ShoppingProj\\shoppingWebBackend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\danda\\AppData\\Roaming\\NuGet\\NuGet.Config",
