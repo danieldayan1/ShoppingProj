@@ -5,7 +5,6 @@
         public string Name { get; set; }
         public string Address { get; set; }
         public string Mail { get; set; }
-        //public Dictionary<string, int> Data { get; set; }
         public Dictionary<int, int> Data { get; set; }
     }
 }

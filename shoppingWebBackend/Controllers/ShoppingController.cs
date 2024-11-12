@@ -28,7 +28,6 @@ namespace shoppingWebBackend.Controllers
             string name = shopRequest.Name;
             string address = shopRequest.Address;
             string mail = shopRequest.Mail;
-            //Dictionary<string, int> data = shopRequest.Data;
             Dictionary<int, int> data = shopRequest.Data;
 
             var newChart = new ChartModel
@@ -46,7 +45,6 @@ namespace shoppingWebBackend.Controllers
 
             foreach (var entry in data)
             {
-                //int productShoppedId = int.Parse(entry.Key);
                 int productShoppedId = entry.Key;
                 var product = await _context.Products.FirstOrDefaultAsync(p => p.product_id == productShoppedId);
 
