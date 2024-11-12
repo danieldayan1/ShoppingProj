@@ -17,6 +17,16 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 
         builder.Services.AddControllers();
 
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAllOrigins", policy =>
+            {
+                policy.AllowAnyOrigin()  // Allow requests from any origin
+                      .AllowAnyMethod()  // Allow any HTTP method (GET, POST, etc.)
+                      .AllowAnyHeader(); // Allow any headers
+            });
+        });
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -27,14 +37,17 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
             app.UseHsts();
         }
 
-        app.UseHttpsRedirection();
         app.UseStaticFiles();
 
         app.UseRouting();
 
+        app.UseCors("AllowAllOrigins");
+
         app.UseAuthorization();
 
         app.MapRazorPages();
+
+        app.MapControllers();
 
         app.Run();
     }

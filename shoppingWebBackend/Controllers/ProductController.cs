@@ -7,7 +7,6 @@ using System.Collections.Generic;
 namespace shoppingWebBackend.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
     public class ProductController : Controller
     {
         private readonly AppDbContext _context;
@@ -15,15 +14,26 @@ namespace shoppingWebBackend.Controllers
         public ProductController(AppDbContext context)
         {
             _context = context;
+      
         }
 
-        [HttpGet]
+        [HttpGet()]
+        [Route("/products")]
         public async Task<ActionResult<Dictionary<string, List<ProductModel>>>> GetProductsGroupByCategory()
         {
             var res = new Dictionary<string, List<ProductModel>>();
-            foreach(var cat in _context.Categories)
+            var groupedProducts = await _context.Products
+                .GroupBy(p => p.Category.category_description) // Group products by CategoryId
+                .Select(g => new
+                {
+                    CategoryDescription= g.Key,
+                    Products = g.ToList()
+                })
+                .ToListAsync();
+            
+            foreach (var pair in groupedProducts)
             {
-                res[cat.Name] = await _context.Products.Include(p => p.Category).ToListAsync();
+                res[pair.CategoryDescription] = pair.Products;
             }
             return res;
         }
